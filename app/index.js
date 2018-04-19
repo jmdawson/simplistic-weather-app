@@ -1,9 +1,18 @@
+const configure = require('./configure')
 const express = require('express')
-const router = express.Router()
+const bodyparser = require('body-parser')
+const app = express()
 
-router.get('/', (req, res) => {
+configure(app)
+
+app.use(bodyparser.urlencoded({extended: false}))
+app.use(bodyparser.json())
+
+require('./forecast').init(app)
+console.log(`BaseURL: ${process.env.ACCUWEATHER_API_URL}`)
+app.get('/', (req, res) => {
   res.render('index', {
-    name: 'John'
+
   })
 })
-module.exports = router
+module.exports = app
