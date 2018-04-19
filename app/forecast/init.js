@@ -22,7 +22,7 @@ function initForecast(app) {
       .then((forecast) => {
         console.log(forecast)
         forecast.requestCity = city
-        res.render('forecast/city',forecast)
+        res.render('../forecast/city',forecast)
       })
       .catch(handleError)
 
