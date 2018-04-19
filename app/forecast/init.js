@@ -8,8 +8,6 @@ function initForecast(app) {
   app.get('/forecast', (req,res,next) => {
     try {
       if (! (baseUrl && apiKey)) {
-        console.log(apiKey)
-        console.log(baseUrl)
         res.status(500)
         throw new Error('not all values set')
       }
