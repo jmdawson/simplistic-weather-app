@@ -16,13 +16,10 @@ function initForecast(app) {
         res.status(422)
         throw new Error("must specify city to search")
       }
-      var displayForecast
       getKey(city)
       .then(getForecast)
       .then((forecast) => {
-        console.log(forecast)
-        forecast.requestCity = city
-        res.render('../forecast/city',forecast)
+        res.render('../forecast/city',getDispayForecast(forecast, city))
       })
       .catch(handleError)
 
@@ -61,7 +58,8 @@ function getForecast(result){
 }
 
 function getDisplayForecast(rawForecast){
-  var displayForecast = {}
+  var displayForecast = rawForecast
+  dispalyForecast.requestCity = city
 
   return displayForecast
 }
