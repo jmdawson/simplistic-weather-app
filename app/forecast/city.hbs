@@ -1,0 +1,21 @@
+<p>Weather for {{requestCity}}</p>
+<div>Headline:
+  <ul>
+    {{#each Headline as |value key|}}
+      <li>{{key}}: {{value}}</li>
+    {{/each}}
+  </ul>
+</div>
+<div> Daily Forecasts:
+  <ul>
+    {{#each DailyForecasts as |forecast|}}
+      {{#each forecast as |value key|}}
+        <li>{{key}}:
+
+            {{value}}
+
+        </li>
+      {{/each}}
+    {{/each}}
+  </ul>
+</div>
