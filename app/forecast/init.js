@@ -11,7 +11,7 @@ function initForecast(app) {
         res.status(500)
         throw new Error('not all values set')
       }
-      var city = req.params.cityName
+      var city = req.query.cityName
       if(! city) {
         res.status(422)
         throw new Error("must specify city to search")
