@@ -3,9 +3,7 @@ const exphbs = require('express-handlebars')
 require('dotenv').config()
 
 function configure(app) {
-  console.log(__dirname)
-  console.log(path.join(__dirname, 'views/layouts'))
-
+  
   app.engine('hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
