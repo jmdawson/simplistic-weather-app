@@ -28,7 +28,6 @@ function initForecast(app) {
 
     }
     catch(error) {
-      console.log(`${res.statusCode}: ${error.message}`)
       res.render('error', {statuscode: res.statusCode, message:error.message})
     }
   })
@@ -47,10 +46,8 @@ function getKey(searchString){
 }
 
 function getForecast(result){
-  console.log(`REsult: ${result}`)
   if(result && result.length > 0){
     var key = result[0].Key
-    console.log("Key: " + key)
     return rp({
       uri: baseUrl+'/forecasts/v1/daily/1day/'+key,
       qs: {
@@ -71,7 +68,6 @@ function getDisplayForecast(rawForecast){
 
 function handleError(err, req, res, next){
   console.error(err)
-  console.log("=====Rendering Error!!!!=====")
   if(res.get('status') >= 400 && res.get('status') <=500){
     res.render('error', err)
   }
