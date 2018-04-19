@@ -1,21 +1,7 @@
-<p>Weather for {{requestCity}}</p>
-<div>Headline:
-  <ul>
-    {{#each Headline as |value key|}}
-      <li>{{key}}: {{value}}</li>
-    {{/each}}
-  </ul>
-</div>
-<div> Daily Forecasts:
-  <ul>
-    {{#each DailyForecasts as |forecast|}}
-      {{#each forecast as |value key|}}
-        <li>{{key}}:
-
-            {{value}}
-
-        </li>
-      {{/each}}
-    {{/each}}
-  </ul>
-</div>
+<h3>Welcome to A Simple Weather App.</h3>
+<p>Please pick a city:
+  <form action = "/forecast">
+    <input name="cityName" id="cityName" type="text" placeholder="City" />
+    <input type="submit" />
+  </form>
+</p>
