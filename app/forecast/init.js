@@ -19,7 +19,7 @@ function initForecast(app) {
       getKey(city)
       .then(getForecast)
       .then((forecast) => {
-        res.render('../forecast/city',getDispayForecast(forecast, city))
+        res.render('../forecast/city',getDisplayForecast(forecast, city))
       })
       .catch(handleError)
 
@@ -57,9 +57,9 @@ function getForecast(result){
   }
 }
 
-function getDisplayForecast(rawForecast){
+function getDisplayForecast(rawForecast, city){
   var displayForecast = rawForecast
-  dispalyForecast.requestCity = city
+  displayForecast.requestCity = city
 
   return displayForecast
 }
