@@ -58,8 +58,24 @@ function getForecast(result){
 }
 
 function getDisplayForecast(rawForecast, city){
-  var displayForecast = rawForecast
+  var displayForecast = {}
+  try {
+  displayForecast.headlinetext = rawForecast.Headline.Text
+  displayForecast.link = DailyForecasts.link
+  if ( rawForecast.DailyForecasts.length >1 )
+    throw new Error ("Unexpected forecast format")
+
+
+  displayForecast.high = rawForecast.DailyForecasts[0].Temperature.Maximum.Value
+  displayForecast.highunit = rawForecast.DailyForecasts[0].Temperature.Maximum.Unit
+  displayForecast.low = rawForecast.DailyForecasts[0].Temperature.Minimum.Value
+  displayForecast.lowunit = rawForecast.DailyForecasts[0].Temperature.Minimum.Unit
   displayForecast.requestCity = city
+
+}
+catch (err){
+  console.log(err)
+}
 
   return displayForecast
 }
