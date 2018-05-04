@@ -1,21 +1,32 @@
-<p>Weather for {{requestCity}}</p>
-<div>Headline:
-  <ul>
-    {{#each Headline as |value key|}}
-      <li>{{key}}: {{value}}</li>
-    {{/each}}
-  </ul>
-</div>
-<div> Daily Forecasts:
-  <ul>
-    {{#each DailyForecasts as |forecast|}}
-      {{#each forecast as |value key|}}
-        <li>{{key}}:
+<div class="container">
+  <h2>Weather for {{requestCity}}</h2>
 
-            {{value}}
-
-        </li>
-      {{/each}}
-    {{/each}}
-  </ul>
+  <div class="row">
+    <div class="col">
+      <div class="row" id="headline">
+        <div class="col">
+          Forecast for {{effectiveDate}}: {{headlinetext}}<br />
+          High: {{high}}&deg;{{highunit}}, Low: {{low}}&deg;{{lowunit}}
+        </div>
+      </div>
+      <div class="row" id="days">
+        <div id="day" class="col-1">
+          <p>Day</p>
+          <p><img src={{dayImage}} /></p>
+          <p>{{dayText}}</p>
+        </div>
+        <div id="night" class="col-1">
+          <p>Night</p>
+          <p><img src={{nightImage}} /></p>
+          <p>{{nightText}}</p>
+        </div>
+        <div class="col-10"> </div>
+      </div>
+      <div class="row" id="source">
+        <div class="col">
+          <a href={{link}}>Source</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
