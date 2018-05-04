@@ -1,21 +1,31 @@
-<p>Weather for {{requestCity}}</p>
-<div>Headline:
-  {{headlinetext}}
-</div>
-<div> Forecast for {{effectiveDate}}:
-  <span>
-    <div className="day">
-      <p>Day</p>
-      <img src={{dayImage}} />
+<div class="container">
+  <h2>Weather for {{requestCity}}</h2>
+
+  <div class="row">
+    <div class="col">
+      <div class="row" id="headline">
+        <div class="col">Forecast for {{effectiveDate}}: {{headlinetext}}</div>
+      </div>
+      <div class="row" id="days">
+        <div id="day" class="col-1">
+          <p>Day</p>
+          <p><img src={{dayImage}} /></p>
+        </div>
+        <div id="night" class="col-1">
+          <p>Night</p>
+          <img src={{nightImage}} />
+        </div>
+        <div class="col-10"> </div>
+      </div>
+      <div class="row" id="temps">
+        <div class="col">
+          <ul>
+            <li>High: {{high}} {{highunit}}</li>
+            <li>Low: {{low}} {{lowunit}}</li>
+            <li><a href={{link}}>Source</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div className="night">
-      <p>Night</p>
-      <img src={{nightImage}} />
-    </div>
-  </span>
-  <ul>
-    <li>High: {{high}} {{highunit}}</li>
-    <li>Low: {{low}} {{lowunit}}</li>
-    <li><a href={{link}}>Source</a></li>
-  </ul>
+  </div>
 </div>
