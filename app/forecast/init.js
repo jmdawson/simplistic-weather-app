@@ -85,14 +85,18 @@ function getDisplayForecast(rawForecast, city){
   if ( rawForecast.DailyForecasts.length >1 )
     throw new Error ("Unexpected forecast format")
 
+  displayForecast.requestCity = city
 
   displayForecast.high = rawForecast.DailyForecasts[0].Temperature.Maximum.Value
   displayForecast.highunit = rawForecast.DailyForecasts[0].Temperature.Maximum.Unit
   displayForecast.low = rawForecast.DailyForecasts[0].Temperature.Minimum.Value
   displayForecast.lowunit = rawForecast.DailyForecasts[0].Temperature.Minimum.Unit
-  displayForecast.requestCity = city
+
+
   displayForecast.dayImage=`${imageUrlBase}${normalizeInteger(rawForecast.DailyForecasts[0].Day.Icon)}${imageUrlTail}`
+  displayForecast.dayText=rawForecast.DailyForecasts[0].Day.IconPhrase
   displayForecast.nightImage=`${imageUrlBase}${normalizeInteger(rawForecast.DailyForecasts[0].Night.Icon)}${imageUrlTail}`
+  displayForecast.nightText=rawForecast.DailyForecasts[0].Night.IconPhrase
 
 }
 catch (err){
