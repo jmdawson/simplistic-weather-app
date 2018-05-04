@@ -60,8 +60,8 @@ function getForecast(result){
 function getDisplayForecast(rawForecast, city){
   var displayForecast = {}
   try {
-  displayForecast.headlinetext = rawForecast.Headline.Text
-  displayForecast.link = DailyForecasts.link
+    displayForecast.headlinetext = rawForecast.Headline.Text
+    displayForecast.link = rawForecast.DailyForecasts.link
   if ( rawForecast.DailyForecasts.length >1 )
     throw new Error ("Unexpected forecast format")
 
