@@ -4,7 +4,10 @@
   <div class="row">
     <div class="col">
       <div class="row" id="headline">
-        <div class="col">Forecast for {{effectiveDate}}: {{headlinetext}}</div>
+        <div class="col">
+          Forecast for {{effectiveDate}}: {{headlinetext}}<br />
+          High: {{high}}&deg;{{highunit}}, Low: {{low}}&deg;{{lowunit}}
+        </div>
       </div>
       <div class="row" id="days">
         <div id="day" class="col-1">
@@ -19,13 +22,9 @@
         </div>
         <div class="col-10"> </div>
       </div>
-      <div class="row" id="temps">
+      <div class="row" id="source">
         <div class="col">
-          <ul>
-            <li>High: {{high}} {{highunit}}</li>
-            <li>Low: {{low}} {{lowunit}}</li>
-            <li><a href={{link}}>Source</a></li>
-          </ul>
+          <a href={{link}}>Source</a>
         </div>
       </div>
     </div>
