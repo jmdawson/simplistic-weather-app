@@ -2,7 +2,17 @@
 <div>Headline:
   {{headlinetext}}
 </div>
-<div> Today's Forecast:
+<div> Forecast for {{effectiveDate}}:
+  <span>
+    <div className="day">
+      <p>Day</p>
+      <img src={{dayImage}} />
+    </div>
+    <div className="night">
+      <p>Night</p>
+      <img src={{nightImage}} />
+    </div>
+  </span>
   <ul>
     <li>High: {{high}} {{highunit}}</li>
     <li>Low: {{low}} {{lowunit}}</li>

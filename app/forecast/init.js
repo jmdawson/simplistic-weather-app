@@ -4,6 +4,24 @@ const rp = require('request-promise')
 const apiKey = process.env.ACCUWEATHER_API_KEY
 const baseUrl = process.env.ACCUWEATHER_API_URL
 
+const imageUrlBase='https://developer.accuweather.com/sites/default/files/'
+const imageUrlTail='-s.png'
+
+function formatDate(dateLiteral) {
+  let d = new Date(dateLiteral)
+  let oneBasedMonth = d.getMonth()+1
+  let dateArray = [
+    `${d.getFullYear()}`,
+    d.getMonth() < 10 ? `0${oneBasedMonth}`: `${oneBasedMonth}`,
+    d.getDate() < 10 ?`0${d.getDate()}`: `${d.getDate()}`
+  ]
+  return `${dateArray[0]}\-${dateArray[1]}\-${dateArray[2]}`
+}
+
+function normalizeInteger(intLiteral){
+  return intLiteral < 10 ? `0${intLiteral}` : `${intLiteral}`
+}
+
 function initForecast(app) {
   app.get('/forecast', (req,res,next) => {
     try {
@@ -63,6 +81,7 @@ function getDisplayForecast(rawForecast, city){
   try {
     displayForecast.headlinetext = rawForecast.Headline.Text
     displayForecast.link = rawForecast.DailyForecasts.link
+    displayForecast.effectiveDate = formatDate(rawForecast.Headline.EffectiveDate)
   if ( rawForecast.DailyForecasts.length >1 )
     throw new Error ("Unexpected forecast format")
 
@@ -72,6 +91,8 @@ function getDisplayForecast(rawForecast, city){
   displayForecast.low = rawForecast.DailyForecasts[0].Temperature.Minimum.Value
   displayForecast.lowunit = rawForecast.DailyForecasts[0].Temperature.Minimum.Unit
   displayForecast.requestCity = city
+  displayForecast.dayImage=`${imageUrlBase}${normalizeInteger(rawForecast.DailyForecasts[0].Day.Icon)}${imageUrlTail}`
+  displayForecast.nightImage=`${imageUrlBase}${normalizeInteger(rawForecast.DailyForecasts[0].Night.Icon)}${imageUrlTail}`
 
 }
 catch (err){
