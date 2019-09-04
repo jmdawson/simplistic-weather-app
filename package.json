@@ -1,6 +1,6 @@
 {
-  "name": "node-hero",
-  "version": "1.0.0",
+  "name": "node-hero-simple-weather",
+  "version": "1.1.0",
   "description": "Yes another node-learning app tutorial",
   "main": "index.js",
   "scripts": {
@@ -12,12 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.3.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "lodash": "^4.17.5",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
     "pg": "^7.4.1",
-    "request": "^2.85.0",
+    "popper.js": "^1.15.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
